@@ -4,12 +4,16 @@ type WordsContextTypes = {
   correctAnswer: string
   isLoading: boolean
   setNewCorrectAnswer: () => void
+  failAnswer: string
+  setFailAnswer: React.Dispatch<React.SetStateAction<string>>
 }
 
 const WordsContext = React.createContext<WordsContextTypes>({
   correctAnswer: '',
   isLoading: true,
   setNewCorrectAnswer: () => {},
+  failAnswer: '',
+  setFailAnswer: () => {},
 })
 
 type WordsContextProviderProps = {
@@ -26,6 +30,7 @@ export const WordsContextProvider = ({
   const [correctAnswer, setCorrectAnswer] = useState<string>('')
   const [words, setWords] = useState<string[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [failAnswer, setFailAnswer] = useState<string>('')
 
   const setNewCorrectAnswer = () => {
     setCorrectAnswer(words[random(0, words.length)].toUpperCase())
@@ -61,6 +66,8 @@ export const WordsContextProvider = ({
     correctAnswer,
     setNewCorrectAnswer,
     isLoading,
+    failAnswer,
+    setFailAnswer,
   }
 
   return (

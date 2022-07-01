@@ -32,11 +32,17 @@ const Game = ({ setIsStatsOpen, setInstructionsOpen, timer }: GameProps) => {
       newScore.games++
       return newScore
     })
+
+    if (won) {
+      wordsContext.setFailAnswer('')
+    }
+    const fail = wordsContext.correctAnswer
+    wordsContext.setFailAnswer(fail)
     userAnswerContext.setUserAnswer([])
     attemptContext.setAttempt(1)
     setIsStatsOpen(true)
-    timer.reset()
-    wordsContext.setNewCorrectAnswer()
+    // timer.reset()
+    // wordsContext.setNewCorrectAnswer()
   }
 
   useEffect(() => {
@@ -44,6 +50,7 @@ const Game = ({ setIsStatsOpen, setInstructionsOpen, timer }: GameProps) => {
       wordsContext.setNewCorrectAnswer()
       timer.reset()
       endGame()
+      wordsContext.setFailAnswer('')
     }
   }, [timer])
 

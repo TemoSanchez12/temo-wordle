@@ -36,6 +36,7 @@ function App() {
 
   return (
     <>
+      <span className='absolute top-2 right-2'>{timer.time}</span>
       {isInstructionsOpen && (
         <Instructions setInstructionsOpen={setInstructionsOpen} />
       )}

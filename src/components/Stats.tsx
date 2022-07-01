@@ -1,5 +1,7 @@
 import { useContext } from 'react'
+
 import ScoreContext from '../store/score'
+import WordsContext from '../store/words'
 
 import Button from './Button'
 import { Modal } from './Modal'
@@ -11,6 +13,7 @@ type StatsProps = {
 
 const Stats = ({ setIsStatsOpen, timer }: StatsProps) => {
   const scoreContext = useContext(ScoreContext)
+  const wordsContext = useContext(WordsContext)
 
   return (
     <Modal>
@@ -32,6 +35,17 @@ const Stats = ({ setIsStatsOpen, timer }: StatsProps) => {
             <span>Victorias</span>
           </div>
         </div>
+
+        {wordsContext.failAnswer.length > 4 && (
+          <div>
+            <p>
+              La palabra era:{' '}
+              <span className='text-lg font-bold'>
+                {wordsContext.failAnswer}
+              </span>
+            </p>
+          </div>
+        )}
 
         <div className='text-center uppercase'>
           <p className='mt-2 text-md'>Siguiente palabra</p>
