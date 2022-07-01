@@ -9,7 +9,7 @@ import Stats from './components/Stats'
 import ScoreContext from './store/score'
 
 function App() {
-  const timer = useTimer(30)
+  const timer = useTimer(300)
 
   const [isStatsOpen, setIsStatsOpen] = useState(false)
   const [isInstructionsOpen, setInstructionsOpen] = useState(true)
